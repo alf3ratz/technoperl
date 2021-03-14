@@ -66,3 +66,35 @@ my $hashref = {@{$aref}};
 
 my %hash = (key1 => "val1");
 print "${hash{key2}}\n";
+
+my %hash; # объявление хеша и его ссылки, чтобы можно было потом их заполнить
+my $href = {};
+$hash{key1} = "val1";
+$href->[key1]="val1";
+# ну или же разименованием
+${$href}{key3} = "value";
+
+
+my %simple = qw(k1 1 k2 2);
+my %hash = (key3 => 3, key4 -> "four", %simple);
+
+my $key = "key3";
+
+print joib ",", %simple,"\n"; # получим: k2,2,k1,1
+# или же k1,1,k2,2 - хеши несортированные
+# можно также написать все ключи или значения
+print join ",", keys %hash,"\n";
+print join ",", values %hash,"\n";
+
+# можно использовать срезы хешей, обязательно собачка
+print join ",", @hash {"k1", $key); # 1, 3
+
+# можно удалять ключ из хеша
+my $one = delete $hash{k1};
+print $one,"\n"; # напишет 1
+
+# можно проверять, есть ли такой элемент в хеше
+print $hash{k2} if exists $hash{k2},"\n"; # 2
+
+ 
+#
