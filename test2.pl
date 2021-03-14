@@ -221,5 +221,32 @@ my @array = %hash;
 @array = map{$_, %hash{$_}} sort keys %hash; # отсортирует все
 %hash = @array; # но тут из-за св-ва хешей все опять может перетасоваться
 
+# самописная функция unique
+my @with_dups = qw( a b c a e n f a d e a);
+my %uniq;
+my @unique = geep {!$uniq{$_}++ } @with_dups;
+print "@uniqie\n"; # напишет a b c e n f d
+# Если попросить написать %uniq
+# то он рапечает то, сколько раз встречался тот или иной символ
+# а 4,
+# b 1, и т.д.
+
+# самописаня функция пересечения
+my @a = 1..55;
+my @b = 45..100;
+my %chk;
+@chk{@a}=();
+
+my @common = grep {exists $chk{$_}} @b;
+
+# самописное исключение
+my @a = 1..10;
+my @odd = grep {$_ %2} @a; # 1 3 5 7 9
+my %odd = map {$_ =>1} @odd;
+my @even = grep {!$odd {$_}} @a;
+
+# рандомизация
+
+my @a = map {int rand 50} 1..10;
 
 
