@@ -210,6 +210,16 @@ sub smart {
     fc($a)cmp fc ($b) # и тут уже сравнит строки
 }
 my @sorted = sort smart @strings;
-#
+
+my @array = (1..5);
+
+my @rev_a = reverse @array;
+
+# преобразования в список
+my %hash = (key1 => "vak1", key2=> "val2");
+my @array = %hash;
+@array = map{$_, %hash{$_}} sort keys %hash; # отсортирует все
+%hash = @array; # но тут из-за св-ва хешей все опять может перетасоваться
+
 
 
