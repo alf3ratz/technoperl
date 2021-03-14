@@ -189,10 +189,27 @@ my $odd = grep {$_ %2 } 1..100;
 
 # map
 my @squares = map {$_ **2} 1..5; #1,4,9,16,25
-#
-#
-#
-#
+
+
+# sort
+# $a, $b - служебные переменные в сортировки
+# <=>, cmp - компараторы
+@alphabetically = sort @strings; # строки отсортируются по алфавиту ( если без параметров)
+@nums = sort {$a <=> $b} @numbers; # по возрастанию сортировка
+@rev = sort {$b <=> $a} @numbers; # по убиыванию сортировка
+
+@ignorecase = sort {fc($a) cmp fc($b)} @strings; #
+
+for my $k (sort keys %hash){ # сорт для ключей хеша
+    print "$k: $hash{$k}\n";
+}
+# можно написать свою ф-цию
+sub smart {
+    $a <=> $b # если строки - пройдет зануление
+    || # перейдет в или
+    fc($a)cmp fc ($b) # и тут уже сравнит строки
+}
+my @sorted = sort smart @strings;
 #
 
 
