@@ -1,0 +1,39 @@
+#!/usr/bin/env perl
+
+use 5.016;
+use warnings;
+#use Getopt::Long; # для обработки аргументов
+my @arr = ();
+my $n ;
+my $r;
+my $u;
+
+=GetOptions ( 'n' => \$n,
+            'r'=> \$r,
+               'u'=> \$u ) or die "Usage: $0 --from NAME\n" ;
+=cut
+if ( $n ) {
+ #my @sorted_arr = sort { $a cmp $b } @ARGV;
+ #print join ",",@sorted_arr,"\n";
+    print "n\n";
+}
+if($r){
+    my @sorted_arr = sort { $a cmp $b } @ARGV;
+    my @rev_a = reverse @sorted_arr;
+    print join ",",@rev_a,"\n";
+    print "r\n";
+}
+if($u){
+    print "u\n";
+}
+foreach (@ARGV)
+{
+  print "$_ --\n";
+}
+
+
+
+
+
+#print <>;
+
